@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-navy antialiased;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl font-semibold tracking-tight text-chocolate sm:text-4xl;
+  }
+
+  .section-label {
+    @apply text-sm font-medium uppercase tracking-[0.15em] text-walnut;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-walnut px-6 py-3 text-sm font-medium text-cream transition-all duration-300 hover:bg-chocolate hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-walnut focus:ring-offset-2 focus:ring-offset-cream sm:px-8 sm:text-base;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border-2 border-cream/70 bg-transparent px-6 py-3 text-sm font-medium text-cream transition-all duration-300 hover:bg-cream/10 focus:outline-none focus:ring-2 focus:ring-cream focus:ring-offset-2 focus:ring-offset-chocolate sm:px-8 sm:text-base;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-lg border-2 border-walnut px-5 py-2.5 text-sm font-medium text-walnut transition-all duration-300 hover:bg-walnut hover:text-cream focus:outline-none focus:ring-2 focus:ring-walnut focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium text-navy/70 transition-colors hover:bg-navy/5;
+  }
+
+  .btn-cream {
+    @apply inline-flex items-center justify-center rounded-lg bg-tan px-8 py-3.5 text-sm font-semibold text-chocolate transition-all duration-300 hover:bg-cream hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tan focus:ring-offset-2 focus:ring-offset-chocolate sm:text-base;
+  }
+
+  .admin-input {
+    @apply w-full rounded-lg border border-chocolate/15 bg-cream px-4 py-2.5 text-sm text-navy transition-colors focus:border-walnut focus:outline-none focus:ring-2 focus:ring-walnut/20;
+  }
+
+  .form-input-dark {
+    @apply w-full rounded-lg border border-cream/20 bg-chocolate/50 px-4 py-3 text-cream placeholder:text-cream/40 transition-colors focus:border-amber focus:outline-none focus:ring-2 focus:ring-amber/30;
+  }
+}

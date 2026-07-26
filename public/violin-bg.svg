@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 720" fill="none" aria-hidden="true">
+  <!-- Violin outline  decorative background -->
+  <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9">
+    <!-- Scroll -->
+    <path d="M120 24 C108 24 100 32 100 44 C100 56 108 64 120 64 C132 64 140 56 140 44 C140 32 132 24 120 24 Z" />
+    <path d="M120 64 L120 88" />
+    <!-- Peg box -->
+    <path d="M108 88 L132 88 L128 120 L112 120 Z" />
+    <!-- Neck -->
+    <path d="M114 120 L114 200 L126 200 L126 120" />
+    <!-- Fingerboard -->
+    <path d="M118 200 L118 320 L122 320 L122 200" stroke-width="1" />
+    <!-- Body upper bout -->
+    <path d="M120 320 C78 318 52 350 50 390 C48 420 62 442 88 448" />
+    <path d="M120 320 C162 318 188 350 190 390 C192 420 178 442 152 448" />
+    <!-- Waist -->
+    <path d="M88 448 C82 468 82 492 88 512" />
+    <path d="M152 448 C158 468 158 492 152 512" />
+    <!-- Lower bout -->
+    <path d="M88 512 C60 530 48 560 52 590 C56 620 84 640 120 642 C156 640 184 620 188 590 C192 560 180 530 152 512" />
+    <!-- f-holes -->
+    <path d="M98 420 C94 440 94 460 98 478" stroke-width="1.2" />
+    <path d="M94 448 L102 448" stroke-width="1" />
+    <path d="M142 420 C146 440 146 460 142 478" stroke-width="1.2" />
+    <path d="M138 448 L146 448" stroke-width="1" />
+    <!-- Bridge area -->
+    <path d="M108 500 L132 500" stroke-width="1" />
+    <!-- Tailpiece hint -->
+    <path d="M114 600 L126 600 L124 630 L116 630 Z" stroke-width="1" />
+    <!-- Strings -->
+    <path d="M116 200 L116 620" stroke-width="0.5" opacity="0.5" />
+    <path d="M120 200 L120 630" stroke-width="0.5" opacity="0.5" />
+    <path d="M124 200 L124 620" stroke-width="0.5" opacity="0.5" />
+    <!-- Bow -->
+    <path d="M168 180 L168 580" stroke-width="2" />
+    <path d="M160 180 C155 175 155 165 162 162 L174 162 C181 165 181 175 176 180" stroke-width="1.5" />
+    <path d="M156 575 C151 580 151 590 158 593 L178 593 C185 590 185 580 180 575" stroke-width="1.5" />
+  </g>
+</svg>
