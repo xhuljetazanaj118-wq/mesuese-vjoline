@@ -22,6 +22,7 @@ export async function sendContactEmail(formData) {
         _subject: `Rezervim violinë – ${formData.name}`,
         _template: 'table',
         _captcha: 'false',
+        _replyto: formData.email,
       }),
     },
   )
@@ -34,7 +35,11 @@ export async function sendContactEmail(formData) {
   }
 
   if (!response.ok) {
-    throw new Error(typeof data.message === 'string' ? data.message : 'Dërgimi dështoi')
+    const msg =
+      typeof data.message === 'string'
+        ? data.message
+        : 'Dërgimi dështoi. Nëse faqja është e re online, aktivizoni FormSubmit (shiko GMAIL-SETUP.md).'
+    throw new Error(msg)
   }
 
   return data
