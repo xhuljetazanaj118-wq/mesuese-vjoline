@@ -67,7 +67,7 @@ Tani **Ruaj Ndryshimet** ruan njëherësh video + audio, dhe (me Redis) **të gj
 3. Emër p.sh. `mesuese-media` → **Create** → **Connect** te ky projekt.
 4. `git push` me kodin e ri → **Redeploy**.
 
-(Vercel shton vetë `UPSTASH_REDIS_REST_URL` dhe `UPSTASH_REDIS_REST_TOKEN`.)
+(Vercel shton **`REDIS_URL`** ose `UPSTASH_REDIS_REST_URL` — të dyja funksionojnë. **Mos** ndiq udhëzimet për Next.js në panel; faqja jote është Vite.)
 
 ### Si ta përdorësh
 
