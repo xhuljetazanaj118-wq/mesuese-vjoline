@@ -1,11 +1,11 @@
 # Formulari → Gmail
 
-Formulari dërgon mesazhe drejt **kurtiela59@gmail.com** përmes [FormSubmit](https://formsubmit.co/) — **nuk nevojitet** skedar `.env`.
+Formulari dërgon mesazhe drejt **kurtiela63@gmail.com** përmes [FormSubmit](https://formsubmit.co/) — **nuk nevojitet** skedar `.env`.
 
 ## Aktivizimi (vetëm herën e parë)
 
 1. Plotëso formularin në faqe dhe kliko **Dërgo**.
-2. Hap **Gmail** (`kurtiela59@gmail.com`).
+2. Hap **Gmail** (`kurtiela63@gmail.com`).
 3. Kërko email nga **FormSubmit** me titull aktivizimi.
 4. Kliko **linkun e konfirmimit**.
 
@@ -19,4 +19,4 @@ Ndrysho `email` në `src/config/site.js`.
 
 - Kontrollo folderin **Spam** në Gmail.
 - Sigurohu që ke klikuar linkun e aktivizimit.
-- Nëse dështon, shkruaj direkt: kurtiela59@gmail.com
+- Nëse dështon, shkruaj direkt: kurtiela63@gmail.com

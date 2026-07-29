@@ -1,5 +1,6 @@
 import { siteConfig } from '../config/site'
 import scrollToSection from '../utils/scrollToSection'
+import SocialLinks from './SocialLinks'
 
 const philosophy = [
   {
@@ -22,11 +23,11 @@ export default function About() {
       <div className="section-container">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row md:items-start md:gap-16">
           <div className="relative shrink-0">
-            <div className="h-72 w-56 overflow-hidden rounded-2xl border-4 border-tan shadow-card sm:h-96 sm:w-72 lg:h-[28rem] lg:w-[22rem]">
+            <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border-4 border-tan shadow-card sm:max-w-sm md:mx-0 md:h-96 md:w-72 lg:h-[28rem] lg:w-[22rem]">
               <img
                 src={siteConfig.aboutImage}
                 alt={`${siteConfig.teacherName} duke luajtur violinën`}
-                className="h-full w-full object-cover object-center"
+                className="aspect-[4/5] w-full object-cover object-center"
               />
             </div>
           </div>
@@ -43,6 +44,7 @@ export default function About() {
               nuk është thjesht punë për mua—është një mision për të formuar instrumentistë të sigurt
               dhe të dashuruar me muzikën.
             </p>
+            <SocialLinks variant="light" className="mt-6 justify-center md:justify-start" />
           </div>
         </div>
 
@@ -56,7 +58,7 @@ export default function About() {
             grup të përshtatura sipas nevojave tuaja.
           </p>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {philosophy.map((item) => (
               <div
                 key={item.title}

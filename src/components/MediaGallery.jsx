@@ -83,10 +83,10 @@ export default function MediaGallery() {
   const [adminOpen, setAdminOpen] = useState(false)
 
   return (
-    <section id="galeria" className="bg-cream py-20 sm:py-28">
+    <section id="galeria" className="bg-cream py-14 sm:py-20 md:py-28">
       <div className="section-container">
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="min-w-0">
             <p className="text-sm font-medium uppercase tracking-[0.15em] text-walnut">Media Gallery</p>
             <h2 className="section-title mt-2">Dëgjoni Interpretatimin Tim</h2>
             <p className="mt-3 max-w-xl text-base leading-relaxed text-navy/70">
@@ -96,7 +96,7 @@ export default function MediaGallery() {
           <button
             type="button"
             onClick={() => setAdminOpen(true)}
-            className="btn-outline shrink-0 text-sm"
+            className="btn-outline w-full shrink-0 text-sm sm:w-auto"
             title="Menaxho videot dhe audiot"
           >
             <svg className="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,7 +112,7 @@ export default function MediaGallery() {
         </div>
 
         {videos.length > 0 && (
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2">
             {videos.map((video) => (
               <VideoCard key={video.id} video={video} />
             ))}
@@ -120,7 +120,7 @@ export default function MediaGallery() {
         )}
 
         {audio.length > 0 && (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {audio.map((item) => (
               <AudioCard key={item.id} item={item} />
             ))}

@@ -1,7 +1,7 @@
 export const siteConfig = {
-  brandName: 'MËSUESE VIOLINË',
+  brandName: 'MËSUESE VIOLINE',
   teacherName: 'Ela Kurti',
-  email: 'kurtiela59@gmail.com',
+  email: 'kurtiela63@gmail.com',
   phone: '0695226854',
   location: 'Vlore, Shqiperi',
   education: 'Universiteti i Arteve, Tiranë',
@@ -9,4 +9,12 @@ export const siteConfig = {
     'https://images.unsplash.com/photo-1511379938549-c8f198198272?auto=format&fit=crop&w=1200&q=80',
   violinImage: '/images/violin.png',
   aboutImage: '/images/ela-kurti.png',
+
+  /** Vendosni linkun e plotë të profilit (p.sh. https://instagram.com/emri) */
+  social: {
+    instagram: 'https://www.instagram.com/violine_studio_/',
+    youtube: 'https://www.youtube.com/channel/UCoRZt-8q3oTRi-caVFCiFKw',
+    facebook: '',
+    tiktok: '',
+  },
 }

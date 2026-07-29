@@ -19,68 +19,85 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   const handleNavClick = (id) => {
     scrollToSection(id)
     setMenuOpen(false)
   }
 
-  const isDark = !scrolled
+  const showSolidHeader = scrolled || menuOpen
+  const onHeroHeader = !scrolled && !menuOpen
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
+        showSolidHeader
           ? 'border-b border-chocolate/10 bg-cream/95 shadow-sm backdrop-blur-md'
-          : 'bg-transparent'
+          : 'bg-chocolate/40 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none'
       }`}
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
-      <div className="section-container flex h-[4.25rem] items-center justify-between sm:h-24">
+      <div className="section-container flex h-14 items-center justify-between sm:h-16 md:h-20">
         <button
           type="button"
           onClick={() => scrollToSection('hero')}
-          className={`text-left transition-colors ${
-            isDark ? 'text-cream hover:text-amber' : 'text-chocolate hover:text-walnut'
+          className={`max-w-[55%] text-left transition-colors sm:max-w-none ${
+            showSolidHeader ? 'text-chocolate hover:text-walnut' : 'text-cream hover:text-amber'
           }`}
         >
-          <span className="block font-serif text-lg font-bold tracking-wide sm:text-xl">
+          <span className="block font-serif text-sm font-bold leading-tight tracking-wide sm:text-lg md:text-xl">
             {siteConfig.brandName}
           </span>
-          <span className={`block text-sm ${isDark ? 'text-cream/70' : 'text-navy/50'}`}>
+          <span
+            className={`block text-xs sm:text-sm ${
+              showSolidHeader ? 'text-navy/50' : 'text-cream/70'
+            }`}
+          >
             {siteConfig.teacherName}
           </span>
         </button>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-8">
           {navLinks.map((link) => (
             <button
               key={link.id}
               type="button"
               onClick={() => handleNavClick(link.id)}
-              className={`text-base font-medium transition-colors ${
-                isDark ? 'text-cream/85 hover:text-cream' : 'text-navy/75 hover:text-walnut'
+              className={`min-h-[44px] px-1 text-sm font-medium transition-colors lg:text-base ${
+                onHeroHeader ? 'text-cream/85 hover:text-cream' : 'text-navy/75 hover:text-walnut'
               }`}
             >
               {link.label}
             </button>
           ))}
-          <button type="button" onClick={() => handleNavClick('kontakt')} className="btn-primary !py-2.5 !text-base">
+          <button
+            type="button"
+            onClick={() => handleNavClick('kontakt')}
+            className="btn-primary !min-h-[44px] !w-auto !py-2 !text-sm lg:!text-base"
+          >
             Rezervo Tani
           </button>
         </nav>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 md:hidden">
           <button
             type="button"
             onClick={() => handleNavClick('kontakt')}
-            className="rounded-lg bg-walnut px-3.5 py-2.5 text-sm font-semibold text-cream transition-colors"
+            className="min-h-[44px] rounded-lg bg-walnut px-3.5 py-2.5 text-sm font-semibold text-cream"
           >
             Rezervo
           </button>
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
-              isDark ? 'text-cream hover:bg-cream/10' : 'text-chocolate hover:bg-chocolate/5'
+            className={`flex h-11 w-11 items-center justify-center rounded-lg transition-colors ${
+              showSolidHeader ? 'text-chocolate hover:bg-chocolate/5' : 'text-cream hover:bg-cream/10'
             }`}
             aria-label={menuOpen ? 'Mbyll menunë' : 'Hap menunë'}
             aria-expanded={menuOpen}
@@ -97,18 +114,25 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-chocolate/10 bg-cream px-4 py-4 lg:hidden">
+        <nav className="max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-chocolate/10 bg-cream px-4 py-3 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 type="button"
                 onClick={() => handleNavClick(link.id)}
-                className="rounded-lg px-4 py-3.5 text-left text-base font-medium text-navy/80 transition-colors hover:bg-chocolate/5 hover:text-walnut"
+                className="min-h-[48px] rounded-lg px-4 py-3 text-left text-base font-medium text-navy/80 active:bg-chocolate/10"
               >
                 {link.label}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => handleNavClick('kontakt')}
+              className="btn-primary mt-2 min-h-[48px] w-full"
+            >
+              Rezervo Tani
+            </button>
           </div>
         </nav>
       )}
