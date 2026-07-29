@@ -4,10 +4,12 @@ import { isValidYouTubeUrl } from '../utils/youtube'
 const emptyVideo = { title: '', category: 'Mësim', url: '' }
 const emptyAudio = { title: '', subtitle: '', src: '' }
 
-export default function MediaAdmin({ videos, audio, onSaveVideos, onSaveAudio, onReset, onClose }) {
+export default function MediaAdmin({ videos, audio, onSave, onReset, onClose }) {
   const [localVideos, setLocalVideos] = useState(videos)
   const [localAudio, setLocalAudio] = useState(audio)
   const [error, setError] = useState('')
+  const [info, setInfo] = useState('')
+  const [saving, setSaving] = useState(false)
 
   const updateVideo = (index, field, value) => {
     setLocalVideos((prev) => prev.map((v, i) => (i === index ? { ...v, [field]: value } : v)))
@@ -33,7 +35,7 @@ export default function MediaAdmin({ videos, audio, onSaveVideos, onSaveAudio, o
     setLocalAudio((prev) => prev.filter((_, i) => i !== index))
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     for (const video of localVideos) {
       if (!video.title.trim()) {
         setError('Çdo video duhet të ketë një titull.')
@@ -45,9 +47,18 @@ export default function MediaAdmin({ videos, audio, onSaveVideos, onSaveAudio, o
       }
     }
     setError('')
-    onSaveVideos(localVideos)
-    onSaveAudio(localAudio)
-    onClose()
+    setInfo('')
+    setSaving(true)
+    try {
+      const result = await onSave(localVideos, localAudio)
+      if (result?.warning) {
+        setInfo(result.warning)
+        return
+      }
+      onClose()
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -68,7 +79,8 @@ export default function MediaAdmin({ videos, audio, onSaveVideos, onSaveAudio, o
             </button>
           </div>
           <p className="mt-1 text-sm text-navy/60">
-            Ngjitni linkun e videos YouTube dhe ruajeni. Ndryshimet ruhen në shfletuesin tuaj.
+            Ngjitni linkun e videos YouTube dhe klikoni Ruaj. Ndryshimet mbeten për të gjithë vizitorët (pas ruajtjes
+            në server).
           </p>
         </div>
 
@@ -185,11 +197,19 @@ export default function MediaAdmin({ videos, audio, onSaveVideos, onSaveAudio, o
           {error && (
             <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">{error}</p>
           )}
+          {info && (
+            <p className="rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900">{info}</p>
+          )}
         </div>
 
         <div className="sticky bottom-0 flex flex-wrap gap-3 border-t border-chocolate/10 bg-cream px-6 py-4">
-          <button type="button" onClick={handleSave} className="btn-primary flex-1 sm:flex-none">
-            Ruaj Ndryshimet
+          <button
+            type="button"
+            onClick={handleSave}
+            disabled={saving}
+            className="btn-primary flex-1 sm:flex-none disabled:opacity-60"
+          >
+            {saving ? 'Duke ruajtur...' : 'Ruaj Ndryshimet'}
           </button>
           <button
             type="button"

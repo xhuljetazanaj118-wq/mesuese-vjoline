@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mesuese-vjoline.vercel.app/sitemap.xml

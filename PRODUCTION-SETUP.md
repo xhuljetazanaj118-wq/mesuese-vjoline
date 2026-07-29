@@ -54,6 +54,31 @@ Lokal për testim: kopjo `.env.example` në `.env` dhe vendos të njëjtin emër
 
 ---
 
+## 3. Media YouTube — të mbeten për të gjithë (Redis)
+
+Më parë media ruhej vetëm në **shfletuesin tënd**; pas daljes / në telefon tjetër kthehej lista fillestare. Ishte edhe një gabim teknik: ruajtja e videos dhe audios mbishkruante njëra-tjetrën.
+
+Tani **Ruaj Ndryshimet** ruan njëherësh video + audio, dhe (me Redis) **të gjithë vizitorët** e shohin të njëjtën galeri.
+
+### Aktivizo Upstash Redis në Vercel (herën e parë)
+
+1. [vercel.com](https://vercel.com) → projekti **mesuese-vjoline**.
+2. **Storage** → **Create Database** → zgjidh **Upstash** / **Redis** (Marketplace).
+3. Emër p.sh. `mesuese-media` → **Create** → **Connect** te ky projekt.
+4. `git push` me kodin e ri → **Redeploy**.
+
+(Vercel shton vetë `UPSTASH_REDIS_REST_URL` dhe `UPSTASH_REDIS_REST_TOKEN`.)
+
+### Si ta përdorësh
+
+1. **Hyr si pronar** → **Menaxho Media** → link YouTube → **Ruaj Ndryshimet** (duhet të mbyllë panelin pa mesazh portokalli).
+2. **Dil (pronar)** ose hap faqen në dritare private — videot **duhet** të mbeten.
+3. Testo edhe nga telefoni (pa hyrje).
+
+Nëse shfaqet mesazh “vetëm në shfletues” / Redis, lidh Storage dhe redeploy.
+
+---
+
 ## Kontroll i shpejtë
 
 | Problemi | Zgjidhja |
@@ -62,5 +87,6 @@ Lokal për testim: kopjo `.env.example` në `.env` dhe vendos të njëjtin emër
 | Nuk shfaqet “Hyr si pronar” | Shto `VITE_OWNER_PASSWORD` te hosti dhe bëj redeploy |
 | Hyr por nuk shfaqet Menaxho Media | Rifresko faqen; provo përsëri hyrjen |
 | Mesazhet nuk vijnë | Konfirmo linkun FormSubmit; provo dërgim pas konfirmimit |
+| Media kthehet prapa | Lidh **Upstash Redis** + redeploy; ruaj përsëri nga Menaxho Media |
 
 Për detaje të vjetra, shiko edhe `GMAIL-SETUP.md`.

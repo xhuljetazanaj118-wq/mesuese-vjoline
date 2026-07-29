@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/violin.svg" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}

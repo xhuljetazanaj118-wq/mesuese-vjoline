@@ -24,7 +24,11 @@ export function isOwnerLoggedIn() {
 
 export function loginOwner(password) {
   if (!isOwnerAuthConfigured()) {
-    return { ok: false, error: 'Hyrja e pronarit nuk është konfiguruar në server.' }
+    return {
+      ok: false,
+      error:
+        'Fjalëkalimi nuk është aktiv në faqe. Vercel → VITE_OWNER_PASSWORD → Redeploy (pa cache).',
+    }
   }
   const expected = import.meta.env.VITE_OWNER_PASSWORD
   if (password !== expected) {
